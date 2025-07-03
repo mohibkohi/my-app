@@ -1,7 +1,24 @@
 body, #root {
-  background: #181818;
+  background: #232323;
   color: #f3f3f3;
   min-height: 100vh;
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.nav-link {
+  color: #f3f3f3;
+  background: #232323;
+  padding: 8px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+  margin-right: 8px;
+}
+
+.nav-link:hover, .nav-link:focus {
+  background: #232323;      /* Keep background unchanged */
+  color: #f3f3f3;           /* Keep text color unchanged */
+  border-bottom: 2px solid #ffffff; /* Add a dark black underline */
 }
