@@ -54,6 +54,16 @@ const UserTable: React.FC = () => {
 
   return (
     <div className="user-table-container">
+      <section style={{ marginBottom: 32 }}>
+        <h2 style={{ color: "#4fc3f7" }}>Student Management Dashboard</h2>
+        <p style={{ lineHeight: 1.7 }}>
+          <strong>This project demonstrates a modern, full-stack cloud application</strong> built with <strong>React</strong> for the frontend and <strong>.NET 8 (ASP.NET Core Web API)</strong> for the backend. The API is securely hosted on <strong>Microsoft Azure</strong> and leverages <strong>Azure SQL Database</strong> for persistent storage of student information.
+          <br /><br />
+          The frontend is also deployed on <strong>Azure Static Web Apps</strong>, providing a fast and scalable user experience. All source code is managed on <strong>GitHub</strong>, and <strong>CI/CD pipelines</strong> are configured to automatically build and deploy both the frontend and backend on every push, ensuring rapid and reliable updates.
+          <br /><br />
+          <strong>Key Technologies:</strong> React, TypeScript, .NET 8, ASP.NET Core, Azure Static Web Apps, Azure App Service, Azure SQL Database, GitHub, CI/CD (GitHub Actions)
+        </p>
+      </section>
       <h2 className="user-table-title">Student List</h2>
       {error && <div className="user-table-error">{error}</div>}
       <div className="user-table-form">

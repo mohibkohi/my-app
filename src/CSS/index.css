@@ -85,3 +85,78 @@ nav {
   color: #f3f3f3;
   box-sizing: border-box;
 }
+
+header {
+  position: relative;
+  min-height: 56px; /* Ensures space for burger even when nav is hidden */
+  z-index: 1002;
+}
+
+/* Move burger to the right */
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  margin-bottom: 0; /* Remove margin-bottom */
+  z-index: 1003;
+  position: absolute;
+  top: 8px;
+  right: 8px; /* <-- changed from left to right */
+}
+
+.burger__bun,
+.burger__meat {
+  display: block;
+  width: 28px;
+  height: 4px;
+  background: #f3f3f3;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Responsive nav */
+.main-nav {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 600px) {
+  .burger {
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 8px; /* <-- keep burger on the right */
+    left: auto;
+  }
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    background: #232323;
+    position: fixed; /* Overlay the nav */
+    top: 0;
+    right: 0; /* <-- align nav to the right */
+    width: 70vw; /* or 100vw for full width */
+    max-width: 320px;
+    padding: 72px 0 16px 0; /* Add top padding for burger space */
+    z-index: 1002;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.18);
+    margin-bottom: 0; /* Remove margin-bottom on mobile */
+    min-height: 100vh;
+    align-items: stretch;
+  }
+  .main-nav.open {
+    display: flex;
+  }
+  .nav-link {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 14px 0;
+  }
+}
