@@ -1,0 +1,7 @@
+body, #root {
+  background: #181818;
+  color: #f3f3f3;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
