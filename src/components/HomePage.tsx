@@ -1,17 +1,38 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HomePage: React.FC = () => (
   <div>
-    <h1>Welcome to My Student Management App</h1>
+    <h1>Welcome to My Portfolio</h1>
     <p>
-      This website lets you view and manage student data stored in Azure SQL via a modern React UI.<br /><br />
-      <strong>Projects:</strong>
-      <ul>
-        <li>Student Management System (this site)</li>
-        <li>Azure SQL Integration Demo</li>
-        <li>Personal Portfolio (coming soon)</li>
-      </ul>
+      Explore some of my featured projects below. Each project leverages modern cloud and web technologies to deliver robust, scalable, and engaging user experiences.
     </p>
+    <ul style={{ lineHeight: 2 }}>
+      <li>
+        <Link to="/work" className="nav-link" style={{ display: 'inline' }}>
+          <strong>Student Management Dashboard</strong>
+        </Link>
+        <br />
+        <span>
+          A full-stack application built with <strong>React</strong> and <strong>.NET 8 (ASP.NET Core Web API)</strong>, hosted on <strong>Azure</strong> with CI/CD pipelines and Azure SQL for data storage. Manage and view student data in real time.
+        </span>
+      </li>
+      <li>
+        <a
+          href="https://main.d21iopdt05d7sj.amplifyapp.com/"
+          className="nav-link"
+          style={{ display: 'inline' }}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <strong>Online Game Portal</strong>
+        </a>
+        <br />
+        <span>
+          A cloud-hosted game website running on <strong>AWS</strong>, featuring interactive games built with <strong>JavaScript</strong> and <strong>React</strong>. Deployed using AWS Amplify for seamless updates and scalability.
+        </span>
+      </li>
+    </ul>
   </div>
 );
 
