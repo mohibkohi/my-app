@@ -1,32 +1,35 @@
 body, #root {
-  background: #232323;
-  color: #f3f3f3;
+  background: #b0b0b0;
+  color: #232323;
   min-height: 100vh;
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 .nav-link {
-  color: #f3f3f3;
-  background: #232323;
-  padding: 10px 18px;
-  border-radius: 4px;
+  color: #232323;
+  background: #f5f5f5;
+  padding: 10px 24px;
+  border-radius: 24px;
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   margin-right: 8px;
   font-size: 1rem;
   display: inline-block;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
 .nav-link:hover, .nav-link:focus {
-  background: #232323;
-  color: #f3f3f3;
-  border-bottom: 2px solid #ffffff;
+  background: #e0e0e0;
+  color: #0078d4;
+  border-bottom: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
 
 nav {
   flex-wrap: wrap;
+  margin-top: 0;
 }
 
 .user-table-form {
@@ -63,6 +66,14 @@ nav {
     width: 100%;
     box-sizing: border-box;
   }
+  .app-content {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .user-table-container {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
 }
 
 /* User table container responsive width */
@@ -72,7 +83,8 @@ nav {
   margin: 0 auto;
   box-sizing: border-box;
   padding: 24px;
-  background: #232323;
+  background: #e0e0e0;
+  color: #232323;
   border-radius: 8px;
 }
 
@@ -87,9 +99,26 @@ nav {
 }
 
 header {
-  position: relative;
-  min-height: 56px; /* Ensures space for burger even when nav is hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: #b0b0b0;
   z-index: 1002;
+  min-height: 72px;      /* Increased from 56px to 72px */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding-top: 12px;     /* Add extra space inside header */
+}
+
+/* Remove margin-top from nav/main-nav, since header is now fixed */
+nav,
+.main-nav {
+  margin-top: 0;
+}
+
+/* Add more top padding to content so it's not hidden */
+.app-content {
+  padding-top: 100px;     /* Match header height + extra space */
 }
 
 /* Move burger to the right */
@@ -122,6 +151,7 @@ header {
   display: flex;
   gap: 16px;
   margin-bottom: 32px;
+  margin-top: 0;
 }
 
 @media (max-width: 600px) {
@@ -158,5 +188,32 @@ header {
     text-align: center;
     font-size: 1.1rem;
     padding: 14px 0;
+  }
+}
+
+.project-link-card {
+  display: inline-block;
+  /* background: #f5f5f5; */ /* Remove background */
+  color: #0078d4;
+  border-radius: 6px;
+  padding: 10px 18px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: none; /* Remove box-shadow */
+  transition: color 0.2s, text-decoration 0.2s;
+  font-size: 1.05rem;
+}
+
+.project-link-card:hover, .project-link-card:focus {
+  /* background: #e0e0e0; */ /* Remove hover background */
+  color: #005fa3;
+  text-decoration: underline;
+}
+
+@media (min-width: 601px) {
+  nav,
+  .main-nav {
+    margin-top: 32px;
   }
 }

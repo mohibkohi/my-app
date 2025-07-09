@@ -9,8 +9,8 @@ const HomePage: React.FC = () => (
     </p>
     <ul style={{ lineHeight: 2 }}>
       <li>
-        <Link to="/work" className="nav-link" style={{ display: 'inline' }}>
-          <strong>Student Management Dashboard</strong>
+        <Link to="/work" className="project-link-card">
+          Student Management Dashboard
         </Link>
         <br />
         <span>
@@ -20,12 +20,11 @@ const HomePage: React.FC = () => (
       <li>
         <a
           href="https://main.d21iopdt05d7sj.amplifyapp.com/"
-          className="nav-link"
-          style={{ display: 'inline' }}
+          className="project-link-card"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <strong>Online Game Portal</strong>
+          Online Game Portal
         </a>
         <br />
         <span>

@@ -28,7 +28,7 @@ const App: React.FC = () => {
           <Link className="nav-link" to="/work" onClick={() => setMenuOpen(false)}>Work</Link>
         </nav>
       </header>
-      <div style={{ maxWidth: 800, margin: '0 auto' }}>
+      <div className="app-content" style={{ maxWidth: 800, margin: '0 auto' }}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
