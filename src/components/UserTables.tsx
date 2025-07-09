@@ -3,6 +3,8 @@ import { fetchUsers, addUser } from '../services/api';
 import { User } from '../types/User';
 import '../CSS/UserTables.css'; // Adjust the path as necessary
 
+const PAGE_SIZE = 10;
+
 const UserTable: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
@@ -10,6 +12,7 @@ const UserTable: React.FC = () => {
   const [lastName, setLastName] = useState('');
   const [posting, setPosting] = useState(false);
   const [error, setError] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     fetchUsers()
@@ -17,6 +20,15 @@ const UserTable: React.FC = () => {
       .catch(() => setError('Failed to fetch users.'))
       .finally(() => setLoading(false));
   }, []);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(users.length / PAGE_SIZE);
+  const paginatedUsers = users.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  // Reset to first page if users change and current page is out of range
+  useEffect(() => {
+    if (currentPage > totalPages) setCurrentPage(1);
+  }, [users, totalPages, currentPage]);
 
   const validate = () => {
     if (!firstName.trim() || !lastName.trim()) {
@@ -100,18 +112,39 @@ const UserTable: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map(u => (
-            <tr key={u.id}>
-              <td className="user-table-td">{u.id}</td>
-              <td className="user-table-td">{u.firstName}</td>
-              <td className="user-table-td">{u.lastName}</td>
+          {paginatedUsers.map(user => (
+            <tr key={user.id}>
+              <td className="user-table-td">{user.id}</td>
+              <td className="user-table-td">{user.firstName}</td>
+              <td className="user-table-td">{user.lastName}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      {/* Pagination controls */}
+      {totalPages > 1 && (
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 16, gap: 8 }}>
+          <button
+            className="user-table-button"
+            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span style={{ alignSelf: 'center' }}>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            className="user-table-button"
+            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };
-//now-ui-dashboard-react
 
 export default UserTable;
