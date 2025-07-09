@@ -90,12 +90,8 @@ nav {
 
 /* Make tables scrollable on small screens */
 .user-table-table {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  background: #232323;
-  color: #f3f3f3;
-  box-sizing: border-box;
+  margin: 0 auto; /* Center the table horizontally */
+
 }
 
 header {

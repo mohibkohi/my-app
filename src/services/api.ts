@@ -13,3 +13,14 @@ export const addUser = async (user: Omit<User, 'id'>): Promise<User> => {
   const response = await axios.post<User>(API_URL, user);
   return response.data;
 };
+
+// Add this function to your API service
+export async function deleteUser(id: number): Promise<void> {
+  await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+}
+
+export const updateUser = async (id: number, user: Omit<User, 'id'>): Promise<User> => {
+  // Include id in the body
+  const response = await axios.put<User>(`${API_URL}/${id}`, { id, ...user });
+  return response.data;
+};

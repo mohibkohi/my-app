@@ -7,7 +7,7 @@ const HomePage: React.FC = () => (
     <p>
       Explore some of my featured projects below. Each project leverages modern cloud and web technologies to deliver robust, scalable, and engaging user experiences.
     </p>
-    <ul style={{ lineHeight: 2 }}>
+    <ul style={{ lineHeight: 2, listStyle: 'none', padding: 0 }}>
       <li>
         <Link to="/work" className="project-link-card">
           Student Management Dashboard

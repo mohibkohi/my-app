@@ -1,80 +1,205 @@
 .user-table-container {
-  max-width: 600px;
-  margin: 40px auto;
-  background: #232323;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-  padding: 32px;
-}
-
-.user-table-title {
-  margin-bottom: 24px;
-  color: #4fc3f7;
-}
-
-.user-table-error {
-  color: #ffb4b4;
-  background: #3a2323;
-  padding: 6px 12px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  font-size: 0.95rem;
-}
-
-.user-table-form {
-  margin-bottom: 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  background: #e0e0e0;
+  color: #232323;
+  border-radius: 8px;
+  padding: 24px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
+
+/* Center the container horizontally */
+.app-content {
+  text-align: center;
+}
+
+
+
 
 .user-table-input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #444;
-  margin-right: 12px;
-  min-width: 140px;
   font-size: 1rem;
-  background: #181818;
-  color: #f3f3f3;
+  box-sizing: border-box;
+}
+
+.user-table-input-firstname,
+.user-table-input-lastname,
+.user-table-add-button {
+  width: 175px;
+  min-width: 175px;
+  max-width: 175px;
+  padding: 6px 8px;   /* Increased vertical padding for more height */
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.user-table-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap; /* prevent wrapping to new line */
+  padding: 0;         /* remove any padding */
+  margin: 0;          /* ensure no margin added */
+  height: 100%;       /* maintain consistent height */
 }
 
 .user-table-button {
-  padding: 8px 20px;
-  border-radius: 4px;
-  border: none;
-  background: #0078d4;
-  color: #fff;
-  font-weight: 600;
+  min-width: 0;
+  width: auto;
+  padding: 6px 12px;
   font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
+  margin: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+  flex: 0 1 auto;
+  max-width: 80px;
 }
 
-.user-table-button:disabled {
-  background: #444;
-  cursor: not-allowed;
-}
-
+/* Table formatting */
 .user-table-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-top: 24px;
+  display: table;
   background: #232323;
   color: #f3f3f3;
+  box-sizing: border-box;
+  border-collapse: collapse;
+}
+
+.user-table-th,
+.user-table-td {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: left;
+  box-sizing: border-box;
+  vertical-align: middle;
 }
 
 .user-table-th {
-  border: 1px solid #333;
-  padding: 10px;
   background: #181818;
   font-weight: 700;
-  text-align: left;
   color: #4fc3f7;
 }
 
 .user-table-td {
-  border: 1px solid #333;
-  padding: 10px;
   background: #232323;
   color: #f3f3f3;
 }
+
+.user-table-th:last-child,
+.user-table-td.user-table-actions {
+  width: 180px;      /* Slightly wider for two buttons */
+  min-width: 120px;
+  max-width: 180px;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+/* Remove right border from the last cell in each row */
+.user-table-table tr > .user-table-td:last-child {
+  border-right: none;
+  height: 68px;
+}
+
+/* Optional: Remove right border from the last header cell for consistency */
+.user-table-table tr > .user-table-th:last-child {
+  border-right: none;
+}
+
+/* Responsive: stack form fields on mobile */
+@media (max-width: 600px) {
+  /* .user-table-form {
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    gap: 8px;
+  } */
+  .user-table-input,
+  .user-table-button {
+      padding: 6px 8px;
+      font-size: 1rem;
+      line-height: 1;
+      box-sizing: border-box;
+      vertical-align: middle;
+  }
+  /* DO NOT add flex-direction: column to .user-table-actions */
+}
+
+/* Responsive: Make table horizontally scrollable on small screens */
+@media (max-width: 700px) {
+  .user-table-form-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .user-table-table {
+    min-width: 500px; /* or the minimum width your table needs */
+    width: max-content;
+  }
+  .user-table-form {
+    width: 500px;
+    min-width: 400px;
+    max-width: 100%;
+  }
+}
+
+.user-table-th:nth-child(1),
+.user-table-td:nth-child(1) { width: 120px; }
+.user-table-th:nth-child(2),
+.user-table-td:nth-child(2),
+.user-table-th:nth-child(3),
+.user-table-td:nth-child(3) { width: 180px; }
+.user-table-th:nth-child(4),
+.user-table-td:nth-child(4) { width: 180px; }
+
+/* To align both, wrap both .user-table-form and .user-table-table in a parent with a fixed width: */
+.user-table-form-table-wrapper {
+  /* width: 660px; ✅ Make sure this matches your table's full width */
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.user-table-td {
+  position: relative;
+  cursor: default;
+}
+
+.user-table-td .tooltip-text {
+  visibility: hidden;
+  width: max-content;
+  max-width: 320px;
+  background-color: #181818;
+  color: #fff;
+  text-align: left;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  position: absolute;
+  z-index: 1000;
+  bottom: 100%; /* tooltip above the cell */
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  white-space: pre-line;
+  word-break: break-word;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+  margin-bottom: 6px;
+}
+
+.user-table-td:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
